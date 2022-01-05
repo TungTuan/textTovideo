@@ -152,8 +152,15 @@ app.post("/upload", (req, res) => {
 							// ffmpeg -i ${outputMp4FilePath} color=green@0.0:s=1280x720:rate=60,format=rgba -ss 00:00:00 -t 00:01:30 -vf "drawtext=fontfile=/Windows/Fonts/arial.ttf:fontsize=60:fontcolor=green:x=(w-text_w)/2+20:y=h-40*t:line_spacing=80:textfile=${txtFile}" -c:a copy ${outputMp4FilePathText}
 						if (fs.existsSync(outputMp4FilePath)) {
 							// uploadYoutube(req,res, outputMp4FilePath)
-							console.log('mp4 success');
-							res.render("success", { name: ' ', pic: ' ', success: true });
+							// console.log('mp4 success');
+							// res.render("success", { name: ' ', pic: ' ', success: true });
+							  res.download(outputMp4FilePath,(err) => {
+								if(err){
+									fs.unlinkSync(outputMp4FilePath)
+									res.send("Unable to download the file")
+								}
+								fs.unlinkSync(outputMp4FilePath)
+								});
 						}
 						if (error) {
 							console.log(`error: ${error.message}`);
