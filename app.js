@@ -159,7 +159,8 @@ app.post("/upload", (req, res) => {
 									fs.unlinkSync(outputMp4FilePath)
 									res.send("Unable to download the file")
 								}
-								fs.unlinkSync(outputMp4FilePath)
+								fs.unlinkSync(outputMp4FilePath);
+								res.render("success", { name: ' ', pic: ' ', success: true });
 								});
 						}
 						if (error) {
