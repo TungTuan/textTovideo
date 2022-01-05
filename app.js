@@ -1,14 +1,14 @@
 const fs = require("fs");
 const express = require("express");
 const multer = require("multer");
-const OAuth2Data = require("./credentials.json");
+// const OAuth2Data = require("./credentials.json");
 const https = require('https');
 const gtts = require('gtts');
 const { exec } = require("child_process");
 
 const db = require('./config/db');
 var Jimp = require("jimp");
-const Credential = require('./models/Credentials')
+// const Credential = require('./models/Credentials')
 db.connect();
 var title, description;
 var tags = [];
@@ -30,7 +30,7 @@ var authed = false;
 
 var token = '';
 var credentialsList = [];
-var indexCredential = 0;
+// var indexCredential = 0;
 // If modifying these scopes, delete token.json.
 const SCOPES =
 	"https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/userinfo.profile";
